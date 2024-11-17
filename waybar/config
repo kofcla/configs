@@ -1,0 +1,105 @@
+{
+"layer": "top",
+"position": "bottom",
+"height": 5,
+"margin-bottom":0,
+"margin-top":0,
+
+"modules-left": ["sway/workspaces"],
+"modules-right":  ["network","pulseaudio", "cpu", "battery", "clock"],
+
+"sway/mode": {
+    "format": "<span style=\"italic\">{}</span>"
+},
+"battery": {
+        "states": {
+                "warning": 30,
+                "critical": 15,
+        },
+        "format": "<span>bat </span><span>[{capacity}%]</span>",
+        "format-icons": ["bat", "bat", "bat"]
+},
+"sway/window": {
+	    "format": "{title}",
+ 		"max-length": 333,
+	    "seperate-outputs": true
+  },
+"tray": {
+    "icon-size": 16,
+    "spacing": 6
+},
+"clock": {
+    "locale": "de_AT.UTF-8", 
+    "format": "<span>/ / /  </span><span>{:%a %F %H:%M}</span>",
+},
+"cpu": {
+    "format": "<span>cpu </span> [{usage}%]",
+    "tooltip": false,
+    "on-click": "kitty -e 'htop'"
+},
+"memory": {
+    "interval": 1,
+    "format": "<span>mem </span> {used:0.2f}GB",
+    "max-length": 10,
+    "tooltip": false,
+    "warning": 70,
+    "critical": 90
+},
+"disk": {
+	"interval": 30,
+	"format": "<span>disk </span> [{percentage_used}%]",
+},
+"network": {
+  "interval": 2,
+  "format-wifi": "wifi [{signalStrength}%]",
+  "format-ethernet": "ether",
+  "format-linked": " {ipaddr}",
+  "format-disconnected": "disconnected",
+  "format-disabled": "",
+  "tooltip": false,
+  "max-length": 20,
+  "min-length": 6,
+  "format-alt": "{essid}",
+},
+"idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+        "activated": "",
+        "deactivated": ""
+    }
+},
+"backlight": {
+    // "device": "acpi_video1",
+    "format": "{icon}&#8239;{percent}%",
+    "format-icons": ["", ""],
+    "on-scroll-down": "brightnessctl -c backlight set 1%-",
+    "on-scroll-up": "brightnessctl -c backlight set +1%"
+},
+"pulseaudio": {
+	"format": "<span>vol </span> [{volume}%]",
+	},
+	"on-click-left": "pavucontrol",
+	"input": true
+
+  },
+ "custom/notification": {
+    "tooltip": false,
+    "format": "<span foreground='#E69875'> {icon} </span>",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+}
