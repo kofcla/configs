@@ -9,12 +9,6 @@
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 
-## notification daemon
-exec swaync
-
-# toggle control center
-bindsym $mod+Shift+n exec swaync-client -t -sw
-
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -55,7 +49,7 @@ exec swayidle -w \
     before-sleep 'swaylock -c 000000' 
 
 set $lockman exec bash ~/.config/sway/lockman.sh
-bindsym $mod+x exec $lockman
+bindsym $mod+Shift+b exec $lockman
 
 
 ### Input configuration
@@ -192,7 +186,6 @@ bindsym $mod+Shift+i exec firefox -private-window
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
 #
-
 # Resizing containers:
 #
 mode "resize" {
@@ -226,19 +219,15 @@ set $date $(date +"%a %F %H:%M")
 set $status /// wifi: [$wifi] /// vol: [$volu] /// mic: $micr /// bat: [$batt%] /// $date
 
 bar {
-    swaybar_command waybar
-    }
+    position bottom
+    status_command while echo $status; do sleep 1; done
 
-#bar {
-#    position bottom
-#    status_command while echo $status; do sleep 1; done
-#
-#    colors {
-#        statusline #ffffff
-#        background #323232
-#        inactive_workspace #32323200 #32323200 #5c5c5c
-#    }
-#}
+    colors {
+        statusline #ffffff
+        background #323232
+        inactive_workspace #32323200 #32323200 #5c5c5c
+    }
+}
 
 # AT Keyboard layout
 

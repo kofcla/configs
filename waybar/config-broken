@@ -8,19 +8,21 @@
 "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
 "modules-right":  ["tray", "network","cpu","memory","pulseaudio","custom/notification","battery", "clock"],
 
-"sway/mode": {
-    "format": " {}  "
-},
-
 "sway/window": {
 	    "format": "{title}",
  		"max-length": 333,
 	    "seperate-outputs": true
   },
+
+"sway/mode": {
+    "format": "<span style=\"italic\">{}</span>"
+},
+
 "tray": {
     "icon-size": 16,
     "spacing": 6
 },
+
 "battery": {
         "states": {
                 "warning": 30,
@@ -34,9 +36,10 @@
         "format-icons": ["󱊡", "󱊢", "󱊣"]
 },
 "clock": {
-    "locale": "de_AT.UTF-8", 
+    "locale": "de_AT.UTF-8",k
     "format": "<span>/ / /  </span><span>{:%a %F %H:%M}</span>",
 },
+
 "cpu": {
     "format": "<span></span> {usage}%",
     "tooltip": false,
@@ -95,11 +98,10 @@
 	},
 	"on-click-left": "pavucontrol",
 	"input": true
-
   },
- "custom/notification": {
+"custom/notification": {
     "tooltip": false,
-    "format": "<span foreground='#E69875'> {icon} </span>",
+    "format": "<span> {icon} </span>",
     "format-icons": {
       "notification": "<span foreground='red'><sup></sup></span>",
       "none": "",

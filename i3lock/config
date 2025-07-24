@@ -1,0 +1,5 @@
+# keybinding to lock screen
+bindsym Control+Mod1+l exec "i3lock -c 000000"
+
+#auto lock the screen
+exec "autolock -detectsleep -time 3 -locker \"i3lock -c 000000\""
