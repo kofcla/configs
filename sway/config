@@ -4,6 +4,8 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+include /etc/sway/config.d/*
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -35,7 +37,9 @@ include /etc/sway/config-vars.d/*
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/wallpapers/SpaceFun/contents/images/1920x1080.svg fill
+output * bg /usr/share/wallpapers/SpaceFun/contents/images/1920x1080.svg fill 
+
+
 #
 # Example configuration:
 #
@@ -217,14 +221,6 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# Status Bar:
-set $wifi $(nmcli radio wifi | sed -e "s/enabled/on/" -e "s/disabled/off/")
-set $volu $(amixer get Master | grep "Right:" | grep -E -o "[[0-9%]+]\s[[A-Za-z]+]")
-set $micr $(amixer get Capture | grep "Right:" | grep -E -o "[[A-Za-z]+]")
-set $batt $(cat /sys/class/power_supply/BAT0/capacity)
-set $date $(date +"%a %F %H:%M")
-set $status /// wifi: [$wifi] /// vol: [$volu] /// mic: $micr /// bat: [$batt%] /// $date
-
 bar {
     swaybar_command waybar
     }
@@ -267,4 +263,4 @@ bindsym	Print exec grim
 
 ## for being pretty ##
 
-include /etc/sway/config.d/*
+exec lxpolkit
