@@ -1,0 +1,47 @@
+## posteo account ##
+
+IMAPStore posteo-remote
+Host posteo.de
+Port 993
+User clara.kofler@posteo.com
+# Uncomment one of the lines below depending on how the password is stored
+PassCmd "pass Mail/clara.kofler@posteo.com"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore posteo-local
+Path ~/.local/mail/posteo/
+Inbox ~/.local/mail/posteo/INBOX
+Subfolders Verbatim
+
+Channel posteo
+Far :posteo-remote:
+Near :posteo-local:
+Create Both
+Expunge Both
+Patterns *
+SyncState *
+
+## webmail account ##
+
+IMAPStore webmail-remote
+Host imap.univie.ac.at 
+Port 993
+User koflerc99 
+# Uncomment one of the lines below depending on how the password is stored
+PassCmd "pass Mail/webmail"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore webmail-local 
+Path ~/.local/mail/webmail/
+Inbox ~/.local/mail/webmail/INBOX
+Subfolders Verbatim
+
+Channel posteo
+Far :webmail-remote:
+Near :webmail-local:
+Create Both
+Expunge Both
+Patterns *
+SyncState *
