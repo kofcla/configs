@@ -1,0 +1,101 @@
+{
+  "layer": "bottom",
+  "position": "bottom",
+  "height": 24,
+  "spacing": 5,
+  "modules-left": ["sway/workspaces","sway/mode"],
+  "modules-center": ["sway/window"],
+  "modules-right": ["tray", "network","cpu","memory","battery","pulseaudio","clock","custom/notification"],
+  "sway/mode": {
+    "format": "{}"
+  },
+  "sway/window": {
+    "format": "{title}"
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "\uf06e",
+      "deactivated": "\uf070"
+    }
+  },
+
+"network": {
+  "interval": 2,
+  "format-wifi": " {signalStrength}%",
+  "format-ethernet": "",
+  "format-linked": " {ipaddr}",
+  "format-disconnected": " Disconnected",
+  "format-disabled": "bla",
+  "tooltip": false,
+  "max-length": 20,
+  "min-length": 6,
+  "on-click": "kitty nmtui",
+},
+
+  "cpu": { 
+    "interval": 10, 
+    "format": "CPU: {usage}%" 
+  },
+  "memory": {
+    "interval": 30,
+    "format": "RAM: {used:0.1f}GiB/{total:0.1f}GiB ({percentage}%) SWAP: {swapUsed:0.1f}GiB/{swapTotal:0.1f}GiB ({swapPercentage}%)"
+},
+  "battery": {
+    "bat": "BAT1",
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 5
+    },
+    "format": "BAT1: {capacity}%",
+    "format-charging": "BAT1: {capacity}% (charging)",
+    "format-plugged": "BAT1: {capacity}% (plugged)",
+},
+
+ "custom/notification": {
+    "tooltip": false,
+    "format": "<span foreground='#E69875'> {icon} </span>",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+}
+
+  "clock": {
+    "format": "{:%Y/%m/%d %H:%M}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b>{}</b></span>"
+      }
+    }
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-icons": {
+      "default": ["\uf026", "\uf027", "\uf028"]
+    },
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol",
+    "format-muted": "\uf00d {volume}%"
+  },
+  "tray": {
+    "icon-size": 20,
+    "spacing": 10
+  },
+}
