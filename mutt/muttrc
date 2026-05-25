@@ -1,0 +1,18 @@
+# Folder hooks
+folder-hook '~/.local/mail/posteo' 'source ~/.config/mutt/account.com.posteo'
+folder-hook '~/.local/mail/webmail' 'source ~/.config/mutt/account.com.webmail'
+
+# Default account
+source ~/.config/mutt/account.com.webmail         
+
+# Macros for switching accounts
+macro index <f2> '<sync-mailbox><enter-command>set from="clara.kofler@univie.ac.at"<enter><enter-command>set realname="Clara Kofler"<enter><enter-command>set sendmail="/usr/bin/msmtp -a webmail"<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><enter-command>set from="clara.kofler@posteo.com"<enter><enter-command>set realname="Clara Kofler"<enter><enter-command>set sendmail="/usr/bin/msmtp -a posteo"<enter><change-folder>!<enter>'
+macro index <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/account.com.webmail<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/account.com.posteo<enter><change-folder>!<enter>'
+
+# HTML settings
+set mailcap_path = ~/.config/mutt/mailcap
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+alias katy.schmidt Katy Schmidt <katy.schmidt@univie.ac.aq>

@@ -1,0 +1,26 @@
+[calendars]
+
+[[standard]]
+path = ~/.local/calendar/clara.kofler@posteo.com/standardkalendar/*
+type = discover
+color = light blue
+
+[[schlawiener]]
+path = ~/.local/calendar/clara.kofler@posteo.com/schlaw_bd/*
+type = discover
+color = light magenta
+
+[[birthdays]]
+path = ~/.local/calendar/clara.kofler@posteo.com/bd/*
+type = discover
+color = yellow
+
+[locale]
+timeformat = %H:%M
+dateformat = %Y-%m-%d
+longdateformat = %Y-%m-%d
+datetimeformat = %Y-%m-%d %H:%M
+longdatetimeformat = %Y-%m-%d %H:%M
+
+[default]
+default_calendar = default 

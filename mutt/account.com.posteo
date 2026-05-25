@@ -1,0 +1,52 @@
+set from='clara.kofler@posteo.com'
+set realname='Clara Kofler'
+set sendmail = "/usr/bin/msmtp -a posteo"
+set sendmail_wait = 0
+unset record
+
+set header_cache='~/.cache/mutt/posteo/headers'
+set message_cachedir='~/.cache/mutt/posteo/bodies'
+set certificate_file='~/.cache/mutt/posteo/certificates'
+
+# My mailboxes
+set folder ='~/.local/mail/posteo'
+set spoolfile='+INBOX'
+set postponed='+Drafts'
+set record='+Sent'
+set trash='+Trash'
+mailboxes =INBOX =Archive =Sent =Trash =Drafts =Junk ='Mailing List' =Notes =Queue
+
+# Personal preferences
+set date_format="%y/%m/%d %I:%M%p"
+set editor='nvim'
+set sort=threads
+set sort='reverse-date'
+set forward_format = "Fwd: %s"
+set include
+
+# Setup khard for address book
+set query_command= "khard email --parsable %s"
+bind editor <Tab> complete-query
+bind editor ^T complete
+
+# Set key bindings
+bind compose p postpone-message
+bind index p recall-message
+macro index G "!mbsync -a -c ~/.mbsyncrc^M" "Update through mbsync"
+
+# Sidebar settings
+set sidebar_visible=yes
+set sidebar_width=20
+set sidebar_short_path = yes
+set sidebar_next_new_wrap = yes
+set mail_check_stats
+#set sidebar_format = '%B%?F? [%F]?%* %?N?%N/?%S'
+bind index,pager \Ck sidebar-prev
+bind index,pager \Cj sidebar-next
+bind index,pager \Co sidebar-open
+bind index,pager \Cp sidebar-prev-new
+bind index,pager \Cn sidebar-next-new
+bind index,pager B sidebar-toggle-visible
+
+
+source /home/clara/.config/mutt/colors.muttrc

@@ -1,0 +1,5 @@
+I use mutt together with 
+msmtp (for sending emails : ~/.msmtprc)
+mbsync (bzw. isync for getting emails : ~/.mbsyncrc)
+vdirsyncer (for getting contacts : ~/.config/vdirsyncer/config)
+khard (for showing address book : ~/.config/khard/khard.conf)
